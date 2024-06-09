@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://cpomahsfncxb3"]
+
+[ext_resource type="Script" path="res://Spear Machine.gd" id="1_ajm62"]
+[ext_resource type="Script" path="res://Attack Area GOOD GUYS.gd" id="2_31qxs"]
+[ext_resource type="Texture2D" uid="uid://bgx5odjya75su" path="res://icon.svg" id="2_nxhgg"]
+[ext_resource type="Texture2D" uid="uid://jvtscwgqdtof" path="res://spear.png" id="3_1bdhy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thjhd"]
+size = Vector2(79, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k365"]
+size = Vector2(39, 20)
+
+[node name="Spear Machine" type="Node2D"]
+script = ExtResource("1_ajm62")
+
+[node name="Machine" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Machine"]
+position = Vector2(3, 2)
+scale = Vector2(0.602318, 0.582501)
+texture = ExtResource("2_nxhgg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Machine"]
+position = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_thjhd")
+
+[node name="attack switch" type="Timer" parent="Machine"]
+wait_time = 0.4
+
+[node name="attack stop" type="Timer" parent="Machine"]
+wait_time = 0.8
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 1
+script = ExtResource("2_31qxs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(62.5, -1)
+shape = SubResource("RectangleShape2D_8k365")
+
+[node name="attack  speed" type="Timer" parent="Area2D"]
+wait_time = 0.1
+
+[node name="Spear" type="Sprite2D" parent="Area2D"]
+texture_filter = 1
+position = Vector2(19, -1)
+rotation = -0.795709
+scale = Vector2(3.35918, -3.39699)
+texture = ExtResource("3_1bdhy")
+
+[connection signal="body_entered" from="Machine" to="." method="_on_machine_body_entered"]
+[connection signal="body_exited" from="Machine" to="." method="_on_machine_body_exited"]
+[connection signal="timeout" from="Machine/attack switch" to="." method="_on_attack_switch_timeout"]
+[connection signal="timeout" from="Machine/attack stop" to="." method="_on_attack_stop_timeout"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="timeout" from="Area2D/attack  speed" to="Area2D" method="_on_attack__speed_timeout"]

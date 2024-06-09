@@ -1,0 +1,133 @@
+[gd_scene load_steps=17 format=3 uid="uid://cwm3flk0l8lq1"]
+
+[ext_resource type="Texture2D" uid="uid://cexj0yidavgx2" path="res://house.png" id="1_dqfub"]
+[ext_resource type="PackedScene" uid="uid://doylmsyaghqpw" path="res://player_chrisp.tscn" id="2_ncq2i"]
+[ext_resource type="PackedScene" uid="uid://bggr81k51s1n" path="res://IM ENEMEY/enemy_1_0_type.tscn" id="3_adx2g"]
+[ext_resource type="PackedScene" uid="uid://1homdpmwiqk3" path="res://door.tscn" id="4_oc5e3"]
+[ext_resource type="PackedScene" uid="uid://bw5rs67fuyinp" path="res://IM ENEMEY/spawner.tscn" id="6_5n6cc"]
+[ext_resource type="PackedScene" uid="uid://c0rhe2oa7fnp2" path="res://build_here.tscn" id="7_225pj"]
+[ext_resource type="Texture2D" uid="uid://clgyfdgk2p3c0" path="res://animation send/IMG_2561.png" id="7_t1f3q"]
+[ext_resource type="PackedScene" uid="uid://cpw7700wp3rud" path="res://card_spawner.tscn" id="8_i7gci"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_81qqu"]
+size = Vector2(2731, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1b4e"]
+size = Vector2(51, 1711.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mj73q"]
+size = Vector2(1635, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23p5e"]
+size = Vector2(1235.25, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyqk5"]
+size = Vector2(64.5, 889.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xaxb4"]
+size = Vector2(1605, 20)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_px67e"]
+vertices = PackedVector2Array(-642, -8, 1681, 5, -446, 1, 899, 86, 924, 458, -450, 448, -150, 325, -199, 823, -211, 553, 925, 553, 940, 918, -654, 915, -433, 827, -438, 322, -144, 109)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(7, 10, 11, 12), PackedInt32Array(12, 11, 0, 5), PackedInt32Array(5, 0, 2, 13), PackedInt32Array(6, 14, 3), PackedInt32Array(5, 13, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(2410, 17, -436, 11, -428, 312, -160, 315, -154, 100, 909, 76, 935, 469, -440, 458, -423, 817, -209, 813, -221, 543, 935, 543, 951, 929, -665, 925, -652, -19, 2412, 0)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imqyn"]
+size = Vector2(128, 912)
+
+[node name="World" type="Node2D"]
+
+[node name="House" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(175, -42)
+scale = Vector2(1.92798, 2.45691)
+texture = ExtResource("1_dqfub")
+
+[node name="Player Chrisp" parent="." instance=ExtResource("2_ncq2i")]
+position = Vector2(-108, -65)
+
+[node name="Enemy 1_0 type" parent="." instance=ExtResource("3_adx2g")]
+position = Vector2(1265, -47)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1, 0)
+
+[node name="Label4" type="Label" parent="Node2D"]
+offset_left = -200.0
+offset_top = -937.0
+offset_right = -112.0
+offset_bottom = -914.0
+scale = Vector2(4.2372, 11.5194)
+text = "Home Base"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(1038, 28)
+shape = SubResource("RectangleShape2D_81qqu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(-715, 100.75)
+shape = SubResource("RectangleShape2D_b1b4e")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(122, 942)
+shape = SubResource("RectangleShape2D_mj73q")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(325.625, 484)
+shape = SubResource("RectangleShape2D_23p5e")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(964.75, 501.25)
+shape = SubResource("RectangleShape2D_nyqk5")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(139, -277)
+shape = SubResource("RectangleShape2D_xaxb4")
+
+[node name="Img2561" type="Sprite2D" parent="Node2D"]
+z_index = -1
+position = Vector2(1635, 122)
+scale = Vector2(1.31922, 1.56836)
+texture = ExtResource("7_t1f3q")
+
+[node name="Img2562" type="Sprite2D" parent="Node2D"]
+z_index = -1
+position = Vector2(-1536.56, 107.439)
+scale = Vector2(1.31922, 1.56836)
+texture = ExtResource("7_t1f3q")
+
+[node name="Img2563" type="Sprite2D" parent="Node2D"]
+z_index = -2
+position = Vector2(215.438, 651.439)
+scale = Vector2(4.49837, 2.74526)
+texture = ExtResource("7_t1f3q")
+
+[node name="Door" parent="." instance=ExtResource("4_oc5e3")]
+position = Vector2(940, -103)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_px67e")
+
+[node name="Spawner" parent="." instance=ExtResource("6_5n6cc")]
+position = Vector2(1698, -122)
+
+[node name="Build Here2" parent="." instance=ExtResource("7_225pj")]
+position = Vector2(709, -32)
+
+[node name="Build Here" parent="." instance=ExtResource("7_225pj")]
+position = Vector2(824, -33)
+
+[node name="Ladder" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder"]
+position = Vector2(-477, 457)
+shape = SubResource("RectangleShape2D_imqyn")
+
+[node name="Card Spawner" parent="." instance=ExtResource("8_i7gci")]
+position = Vector2(423, -56)
+
+[connection signal="body_entered" from="Ladder" to="Player Chrisp" method="_on_ladder_body_entered"]
+[connection signal="body_exited" from="Ladder" to="Player Chrisp" method="_on_ladder_body_exited"]
